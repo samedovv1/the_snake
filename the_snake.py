@@ -55,6 +55,7 @@ class GameObject:
         """Отрисовать объект."""
         pass
 
+
 class Apple(GameObject):
     """Класс яблока."""
 
@@ -84,7 +85,7 @@ class Snake(GameObject):
         """Создать змейку."""
         super().__init__(SNAKE_COLOR)
         self.reset()
-    
+
     def get_head_position(self):
         """Вернуть координаты головы."""
         return self.positions[0]
@@ -94,7 +95,7 @@ class Snake(GameObject):
         if self.next_direction:
             self.direction = self.next_direction
             self.next_direction = None
-    
+
     def move(self):
         """Передвинуть змейку."""
         head_x, head_y = self.get_head_position()
@@ -111,7 +112,7 @@ class Snake(GameObject):
             self.last = self.positions.pop()
         else:
             self.last = None
-    
+
     def draw(self):
         """Отрисовать змейку."""
         for position in self.positions[:-1]:
@@ -136,7 +137,7 @@ class Snake(GameObject):
                 BOARD_BACKGROUND_COLOR,
                 last_rect
             )
-    
+
     def reset(self):
         """Вернуть змейку в начальное состояние."""
         self.position = (
@@ -148,7 +149,6 @@ class Snake(GameObject):
         self.direction = RIGHT
         self.next_direction = None
         self.last = None
-
 
 
 def handle_keys(game_object):
@@ -179,7 +179,6 @@ def handle_keys(game_object):
                 and game_object.direction != LEFT
             ):
                 game_object.next_direction = RIGHT
-
 
 
 def main():
