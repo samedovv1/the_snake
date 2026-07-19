@@ -52,7 +52,9 @@ class GameObject:
 
     def draw(self):
         """Отрисовать объект."""
-        raise NotImplementedError('Метод draw должен быть реализован в дочернем классе')
+        raise NotImplementedError(
+            'Метод draw должен быть реализован в дочернем классе'
+            )
 
     def draw_cell(self, position):
         """Отрисовать одну ячейку."""
@@ -64,7 +66,11 @@ class GameObject:
 class Apple(GameObject):
     """Класс яблока."""
 
-    def __init__(self, occupied_positions=(SCREEN_CENTER,), body_color=APPLE_COLOR):
+    def __init__(
+            self,
+            occupied_positions=(SCREEN_CENTER,),
+            body_color=APPLE_COLOR
+            ):
         """Создать яблоко."""
         super().__init__(body_color)
         self.randomize_position(occupied_positions)
@@ -72,7 +78,7 @@ class Apple(GameObject):
     def randomize_position(self, occupied_positions):
         """Сгенерировать случайную позицию."""
         while True:
-            position = (randint(0, GRID_WIDTH - 1) * GRID_SIZE, 
+            position = (randint(0, GRID_WIDTH - 1) * GRID_SIZE,
                         randint(0, GRID_HEIGHT - 1) * GRID_SIZE)
             if position not in occupied_positions:
                 self.position = position
