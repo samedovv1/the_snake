@@ -53,8 +53,7 @@ class GameObject:
     def draw(self):
         """Отрисовать объект."""
         raise NotImplementedError(
-            'Метод draw должен быть реализован в дочернем классе'
-            )
+            'Метод draw должен быть реализован в дочернем классе')
 
     def draw_cell(self, position):
         """Отрисовать одну ячейку."""
@@ -69,8 +68,7 @@ class Apple(GameObject):
     def __init__(
             self,
             occupied_positions=(SCREEN_CENTER,),
-            body_color=APPLE_COLOR
-            ):
+            body_color=APPLE_COLOR):
         """Создать яблоко."""
         super().__init__(body_color)
         self.randomize_position(occupied_positions)
