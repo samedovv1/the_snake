@@ -76,10 +76,10 @@ class Apple(GameObject):
     def randomize_position(self, occupied_positions):
         """Сгенерировать случайную позицию."""
         while True:
-            position = (randint(0, GRID_WIDTH - 1) * GRID_SIZE,
-                        randint(0, GRID_HEIGHT - 1) * GRID_SIZE)
-            if position not in occupied_positions:
-                self.position = position
+            self.position = (
+                randint(0, GRID_WIDTH - 1) * GRID_SIZE,
+                randint(0, GRID_HEIGHT - 1) * GRID_SIZE)
+            if self.position not in occupied_positions:
                 break
 
     def draw(self):
@@ -128,12 +128,7 @@ class Snake(GameObject):
         for position in self.positions[:-1]:
             self.draw_cell(position)
 
-        head_rect = pg.Rect(
-            self.get_head_position(),
-            (GRID_SIZE, GRID_SIZE)
-        )
-        pg.draw.rect(screen, self.body_color, head_rect)
-        pg.draw.rect(screen, BORDER_COLOR, head_rect, 1)
+        self.draw_cell(self.get_head_position())
 
         if self.last:
             last_rect = pg.Rect(
